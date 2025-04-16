@@ -1,0 +1,96 @@
+.product-detail {
+    margin-top: 160px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    font-family: 'GothicWar', sans-serif;
+  }
+  
+  .product-detail img {
+    width: 380px;         /* 🔹 was 300px */
+    height: 450px;        /* 🔹 was 300px */
+    object-fit: contain;  /* 🔹 so we don't crop */
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  }
+  
+  .product-detail h2 {
+    font-size: 2.5rem;
+    color: silver;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+  }
+  
+  .product-detail p {
+    font-size: 1.5rem;
+    opacity: 0.95;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+    line-height: 1.8;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .add-to-cart {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid white;
+    padding: 12px 30px;
+    border-radius: 12px;
+    color: white;
+    font-family: 'GothicWar', sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .add-to-cart:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+  
+  .product-card a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Size section */
+  .size-selector {
+    margin: 20px 0;
+  }
+  
+  .size-label {
+    font-size: 1.5rem; /* 🔹 bump for clarity */
+    font-family: 'GothicWar', sans-serif;
+    color: white;
+    margin-right: 10px;
+    text-shadow: 0 0 6px rgba(255,255,255,0.4);
+  }
+  
+  /* Select styling */
+  #size-select {
+    font-size: 1.3rem; /* 🔹 bump up */
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid white;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-family: 'GothicWar', sans-serif;
+    text-shadow: 0 0 4px rgba(255,255,255,0.4);
+    appearance: none;
+  }
+  
+  #size-select:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
+  }
+  
+  #size-select option {
+    background-color: black;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'GothicWar', sans-serif;
+  }
+  

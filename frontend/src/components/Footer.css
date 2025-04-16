@@ -1,0 +1,35 @@
+.site-footer {
+    margin-top: 100px;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    font-family: 'GothicWar', sans-serif;
+    font-size: 1rem;
+    text-shadow: 0 0 5px rgba(255,255,255,0.2);
+  }
+  
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .footer-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+  }
+  
+  .footer-links a:hover {
+    color: silver;
+  }
+  
