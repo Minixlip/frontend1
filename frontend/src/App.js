@@ -8,9 +8,12 @@ import Hoodies from './pages/hoodies';
 import More from './pages/more';
 import ContactPage from './pages/contact';
 import ProductDetail from './pages/ProductDetail';
+import Login from './pages/login';
 import Product from './components/Product';
 import CartPage from './pages/Cart';
 import { CartProvider, useCart } from './context/CartContext';
+import Register from './pages/register';
+import Chat from './pages/chat';
 
 function AppWrapper() {
   return (
@@ -26,6 +29,8 @@ function App() {
   const audioRef = useRef(null);
   const [volume, setVolume] = useState(0.2);
   const { cartItems } = useCart();
+
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -45,6 +50,14 @@ function App() {
       audioRef.current.volume = volume;
     }
   }, [volume]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userid');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    window.location.href = '/login';
+  };
 
   return (
     <div className="App">
@@ -75,23 +88,90 @@ function App() {
           <Link to="/tshirts">T-Shirts</Link>
           <Link to="/hoodies">Hoodies</Link>
           <Link to="/more">More</Link>
-          <Link to="/cart" className="cart-link">
+          <Link to="/chat">Chatbot</Link>
+          <Link
+            to="/cart"
+            className="cart-link"
+          >
             Cart{cartItems.length > 0 && ` (${cartItems.length})`}
           </Link>
+          {!token ? (
+            <div
+              style={{
+                display: 'flex',
+                gap: '30px',
+              }}
+            >
+              <Link to="/register">Register</Link>
+              <Link to="/login">Login</Link>
+            </div>
+          ) : (
+            <div>
+              <span
+                style={{ fontSize: '22px', cursor: 'pointer' }}
+                onClick={() => handleLogout()}
+              >
+                Logout
+              </span>
+            </div>
+          )}
         </nav>
       </header>
 
-      <audio ref={audioRef} src="/bg-music.mp3" autoPlay loop muted preload="auto" />
+      <audio
+        ref={audioRef}
+        src="/bg-music.mp3"
+        autoPlay
+        loop
+        muted
+        preload="auto"
+      />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/jeans" element={<Jeans />} />
-        <Route path="/tshirts" element={<TShirts />} />
-        <Route path="/hoodies" element={<Hoodies />} />
-        <Route path="/more" element={<More />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/product/:slug" element={<ProductDetail />} />
-        <Route path="/cart" element={<CartPage />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/jeans"
+          element={<Jeans />}
+        />
+        <Route
+          path="/tshirts"
+          element={<TShirts />}
+        />
+        <Route
+          path="/hoodies"
+          element={<Hoodies />}
+        />
+        <Route
+          path="/more"
+          element={<More />}
+        />
+        <Route
+          path="/contact"
+          element={<ContactPage />}
+        />
+        <Route
+          path="/product/:slug"
+          element={<ProductDetail />}
+        />
+        <Route
+          path="/cart"
+          element={<CartPage />}
+        />
+        <Route
+          path="/login"
+          element={<Login />}
+        />
+        <Route
+          path="/register"
+          element={<Register />}
+        />
+        <Route
+          path="/chat"
+          element={<Chat />}
+        />
       </Routes>
 
       <Footer />
@@ -123,8 +203,15 @@ function Home() {
       <h2 className="section-title">Bestsellers</h2>
       <div className="product-row">
         {bestsellers.map((product, idx) => (
-          <Link to={`/product/${product.slug}`} key={idx} style={{ textDecoration: 'none' }}>
-            <Product title={product.title} image={product.image} />
+          <Link
+            to={`/product/${product.slug}`}
+            key={idx}
+            style={{ textDecoration: 'none' }}
+          >
+            <Product
+              title={product.title}
+              image={product.image}
+            />
           </Link>
         ))}
       </div>
@@ -136,7 +223,12 @@ function Footer() {
   return (
     <footer className="footer">
       <p>2025 © Kyyl9 — All rights reserved.</p>
-      <Link to="/contact" className="footer-contact-button">Contact</Link>
+      <Link
+        to="/contact"
+        className="footer-contact-button"
+      >
+        Contact
+      </Link>
     </footer>
   );
 }
